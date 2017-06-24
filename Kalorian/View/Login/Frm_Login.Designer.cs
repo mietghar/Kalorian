@@ -101,6 +101,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Nowe konto";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Frm_Login
             // 

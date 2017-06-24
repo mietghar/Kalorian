@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\ClE_User.cs" />
+    <Compile Include="Enum\E_Repositories.cs" />
+    <Compile Include="Factory\Cl_RepositoryFactory.cs" />
     <Compile Include="Helper\Themes\Buttons\Cl_AddButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -68,6 +71,7 @@
     <Compile Include="Presenter\ClP_Login.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Cl_UserRepository.cs" />
     <Compile Include="View\Login\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +106,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\" />
-    <Folder Include="Factory\" />
-    <Folder Include="Repository\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
