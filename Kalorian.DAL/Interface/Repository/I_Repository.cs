@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Kalorian.Common.Interface;
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Kalorian.Interface.Repository
+namespace Kalorian.DAL.Interface.Repository
 {
     public interface I_Repository<T>
     {

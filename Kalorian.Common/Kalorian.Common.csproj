@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3EAE630-96B8-49B9-A577-62FFB42F0703}</ProjectGuid>
+    <ProjectGuid>{1B231AF1-E643-43D4-ABE9-5BB04DB72957}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kalorian</RootNamespace>
-    <AssemblyName>Kalorian</AssemblyName>
+    <RootNamespace>Kalorian.Common</RootNamespace>
+    <AssemblyName>Kalorian.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,36 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Themes\Buttons\Cl_AddButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Helper\Themes\Buttons\Cl_CloseButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Helper\Themes\Cl_BaseColor.cs" />
-    <Compile Include="Helper\Themes\Buttons\Cl_SimpleButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Helper\Themes\Forms\Frm_BaseSimpleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Helper\Themes\Forms\Frm_BaseSimpleForm.Designer.cs">
-      <DependentUpon>Frm_BaseSimpleForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helper\Themes\Forms\Interface\I_BaseSimpleFormView.cs" />
-    <Compile Include="Helper\Themes\Forms\Presenter\ClP_BaseSimpleForm.cs" />
-    <Compile Include="Presenter\ClP_Login.cs" />
+    <Compile Include="Interface\I_Identifiable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Login\Frm_Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Login\Frm_Login.Designer.cs">
-      <DependentUpon>Frm_Login.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Helper\Themes\Forms\Frm_BaseSimpleForm.resx">
-      <DependentUpon>Frm_BaseSimpleForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -85,9 +58,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Login\Frm_Login.resx">
-      <DependentUpon>Frm_Login.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,20 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kalorian.Common\Kalorian.Common.csproj">
-      <Project>{1b231af1-e643-43d4-abe9-5bb04db72957}</Project>
-      <Name>Kalorian.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kalorian.DAL\Kalorian.DAL.csproj">
-      <Project>{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}</Project>
-      <Name>Kalorian.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factory\" />
-    <Folder Include="Interface\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

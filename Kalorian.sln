@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorian", "Kalorian\Kalorian.csproj", "{B3EAE630-96B8-49B9-A577-62FFB42F0703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorian.DAL", "Kalorian.DAL\Kalorian.DAL.csproj", "{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorian.Common", "Kalorian.Common\Kalorian.Common.csproj", "{1B231AF1-E643-43D4-ABE9-5BB04DB72957}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B3EAE630-96B8-49B9-A577-62FFB42F0703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3EAE630-96B8-49B9-A577-62FFB42F0703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3EAE630-96B8-49B9-A577-62FFB42F0703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F340BBA-A80E-422A-ACEC-49C5DFB7AE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B231AF1-E643-43D4-ABE9-5BB04DB72957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B231AF1-E643-43D4-ABE9-5BB04DB72957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B231AF1-E643-43D4-ABE9-5BB04DB72957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B231AF1-E643-43D4-ABE9-5BB04DB72957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
