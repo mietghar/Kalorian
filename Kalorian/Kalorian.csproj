@@ -64,9 +64,16 @@
     </Compile>
     <Compile Include="Helper\Themes\Forms\Interface\I_BaseSimpleFormView.cs" />
     <Compile Include="Helper\Themes\Forms\Presenter\ClP_BaseSimpleForm.cs" />
-    <Compile Include="Presenter\ClP_Login.cs" />
+    <Compile Include="Presenter\Login\ClP_Login.cs" />
+    <Compile Include="Presenter\Login\ClP_Register.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Login\Frm_Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login\Frm_Register.Designer.cs">
+      <DependentUpon>Frm_Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,9 @@
     </Compile>
     <EmbeddedResource Include="View\Login\Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login\Frm_Register.resx">
+      <DependentUpon>Frm_Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

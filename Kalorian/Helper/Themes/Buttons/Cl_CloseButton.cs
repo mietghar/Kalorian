@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Kalorian.Helper.Themes.Buttons
 {
     [ToolboxItem(true)]
     [DisplayName("Standard close button")]
-    class Cl_CloseButton : Cl_SimpleButton
+    public class Cl_CloseButton : Cl_SimpleButton
     {
         public Cl_CloseButton()
         {

@@ -37,10 +37,15 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnClose
+            // 
+            this.btnClose.TabIndex = 4;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnLogin);
+            this.panel1.Controls.SetChildIndex(this.btnClose, 0);
             this.panel1.Controls.SetChildIndex(this.btnLogin, 0);
             this.panel1.Controls.SetChildIndex(this.btnAdd, 0);
             // 
@@ -49,7 +54,7 @@
             this.frtxtUser.Location = new System.Drawing.Point(105, 17);
             this.frtxtUser.Name = "frtxtUser";
             this.frtxtUser.Size = new System.Drawing.Size(172, 20);
-            this.frtxtUser.TabIndex = 1;
+            this.frtxtUser.TabIndex = 0;
             // 
             // lblUser
             // 
@@ -76,7 +81,7 @@
             this.frtxtPassword.Location = new System.Drawing.Point(105, 47);
             this.frtxtPassword.Name = "frtxtPassword";
             this.frtxtPassword.Size = new System.Drawing.Size(172, 20);
-            this.frtxtPassword.TabIndex = 4;
+            this.frtxtPassword.TabIndex = 1;
             // 
             // btnLogin
             // 

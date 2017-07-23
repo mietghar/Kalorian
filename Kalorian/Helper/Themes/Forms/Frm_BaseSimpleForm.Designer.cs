@@ -77,7 +77,7 @@
 
         #endregion
 
-        private Buttons.Cl_CloseButton btnClose;
+        public Buttons.Cl_CloseButton btnClose;
         protected System.Windows.Forms.Panel panel1;
     }
 }

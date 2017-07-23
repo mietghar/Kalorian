@@ -2,9 +2,9 @@
 using Kalorian.Helper.Themes;
 using Kalorian.DAL.Interface.Repository;
 using System.Windows.Forms;
-using Kalorian.DAL.Repository;
+using Kalorian.View.Login;
 
-namespace Kalorian.Presenter
+namespace Kalorian.Login.Presenter
 {
     public class ClP_Login
     {
@@ -25,11 +25,15 @@ namespace Kalorian.Presenter
 
         public void CreateNewUser()
         {
-            ClE_User test = new ClE_User();
-            test.Name = "test name";
-            test.Password = "";
-            vrcUserRepository = new Cl_UserRepository();
-            vrcUserRepository.Add(test);
+            using (Frm_Register vrfRegister = new Frm_Register())
+            {
+                vrfRegister.ShowDialog();
+            }
+            //ClE_User test = new ClE_User();
+            //test.Name = "test name";
+            //test.Password = "";
+            //vrcUserRepository = new Cl_UserRepository();
+            //vrcUserRepository.Add(test);
         }
     }
 }
