@@ -1,8 +1,7 @@
-﻿using Kalorian.View.Login;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
-namespace Kalorian
+namespace Kalorian.Common
 {
     static class Program
     {
@@ -14,7 +13,6 @@ namespace Kalorian
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Login());
         }
     }
 }

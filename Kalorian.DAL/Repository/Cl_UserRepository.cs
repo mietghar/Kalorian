@@ -1,19 +1,16 @@
-﻿using Kalorian.Entity;
-using Kalorian.Interface.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Collections;
+using Kalorian.DAL.Entity;
+using Kalorian.DAL.Interface.Repository;
+using System.Windows.Forms;
 
-namespace Kalorian.Repository
+namespace Kalorian.DAL.Repository
 {
     public class Cl_UserRepository : I_Repository<ClE_User>
     {
         public void Add(ClE_User item)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Created new User");
         }
 
         public ClE_User GetById(Guid id)
