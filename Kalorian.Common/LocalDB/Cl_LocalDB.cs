@@ -8,7 +8,7 @@ namespace Kalorian.Common.LocalDB
 {
     public class Cl_LocalDB
     {
-        public bool CheckLocalDBExistance(string vrpLocalDBName)
+        public bool CheckLocalDBExistance(string vrpLocalDBName = "kalorian")
         {
             using (SqlConnection vrlConnection = new SqlConnection(this.LocalDBConnectionString))
             {
@@ -16,7 +16,7 @@ namespace Kalorian.Common.LocalDB
             }
         }
 
-        public void CreateLocalDB(string vrpLocalDBName)
+        public void CreateLocalDB(string vrpLocalDBName = "kalorian")
         {
             using(SqlConnection vrlConnection = new SqlConnection(this.LocalDBConnectionString))
             {
@@ -27,7 +27,10 @@ namespace Kalorian.Common.LocalDB
             }
         }
 
-        public string LocalDBConnectionString 
+        private string LocalDBConnectionString 
             => "Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=true;";
+
+        public string ConnectionString 
+            => "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kalorian;Integrated Security=true;";
     }
 }

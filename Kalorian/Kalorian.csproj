@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Helper\Themes\Forms\Interface\I_BaseSimpleFormView.cs" />
     <Compile Include="Helper\Themes\Forms\Presenter\ClP_BaseSimpleForm.cs" />
+    <Compile Include="Interface\I_Register.cs" />
     <Compile Include="Presenter\Login\ClP_Login.cs" />
     <Compile Include="Presenter\Login\ClP_Register.cs" />
     <Compile Include="Program.cs" />
@@ -123,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Factory\" />
-    <Folder Include="Interface\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

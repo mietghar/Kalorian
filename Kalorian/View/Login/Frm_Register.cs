@@ -1,9 +1,12 @@
-﻿using Kalorian.Helper.Themes.Forms;
+﻿using System;
+using Kalorian.Helper.Themes.Forms;
+using Kalorian.Interface;
 using Kalorian.Presenter.Login;
+using System.Windows.Forms;
 
 namespace Kalorian.View.Login
 {
-    public partial class Frm_Register : Frm_BaseSimpleForm
+    public partial class Frm_Register : Frm_BaseSimpleForm, I_Register
     {
         private new ClP_Register vrcPresenter;
 
@@ -11,6 +14,12 @@ namespace Kalorian.View.Login
         {
             InitializeComponent();
             InitializeControls();
+            CreatePresenter();
+        }
+
+        private void CreatePresenter()
+        {
+            vrcPresenter = new ClP_Register(this);
         }
 
         private void InitializeControls()
@@ -20,7 +29,17 @@ namespace Kalorian.View.Login
 
         private void btnRegister_Click(object sender, System.EventArgs e)
         {
-
+            try
+            {
+                vrcPresenter.RegisterNewUser();
+            }
+            catch(Exception vrlException)
+            {
+                MessageBox.Show(vrlException.Message);
+            }
         }
+
+        public string UserName => frtxtUser.Text;
+        public string Password => frtxtPassword.Text;
     }
 }
