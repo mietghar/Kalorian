@@ -1,4 +1,4 @@
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[kal_User]') AND type in (N'U'))
+IF NOT EXISTS 'kal_User'
 BEGIN
 CREATE TABLE [dbo].[kal_User](
 	[usr_Id] [int] IDENTITY(1,1) NOT NULL,
