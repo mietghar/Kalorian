@@ -29,11 +29,6 @@ namespace Kalorian.Login.Presenter
             {
                 vrfRegister.ShowDialog();
             }
-            //ClE_User test = new ClE_User();
-            //test.Name = "test name";
-            //test.Password = "";
-            //vrcUserRepository = new Cl_UserRepository();
-            //vrcUserRepository.Add(test);
         }
     }
 }

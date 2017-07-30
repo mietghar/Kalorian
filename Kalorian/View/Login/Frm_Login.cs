@@ -6,7 +6,7 @@ namespace Kalorian.View.Login
 {
     public partial class Frm_Login : Frm_BaseSimpleForm
     {
-        ClP_Login vrcPresenter;
+        private new ClP_Login vrcPresenter;
         public Frm_Login()
         {
             vrcPresenter = new ClP_Login(this);
