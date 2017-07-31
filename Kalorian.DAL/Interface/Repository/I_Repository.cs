@@ -1,5 +1,4 @@
-﻿using Kalorian.Common.Interface;
-using System;
+﻿using System;
 using System.Collections;
 
 namespace Kalorian.DAL.Interface.Repository

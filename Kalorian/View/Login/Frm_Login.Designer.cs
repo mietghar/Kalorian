@@ -94,6 +94,7 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Zaloguj";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnAdd
             // 

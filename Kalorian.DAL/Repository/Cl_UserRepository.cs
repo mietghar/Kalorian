@@ -8,6 +8,7 @@ using Dapper;
 using System.Data;
 using Kalorian.Common.Utility.Cryptography;
 using System.Linq;
+using MySql.Data.MySqlClient;
 
 namespace Kalorian.DAL.Repository
 {
@@ -16,9 +17,11 @@ namespace Kalorian.DAL.Repository
         public void Add(ClE_User vrpUser)
         {
             vrpUser.Password = new Cl_Cryptography().SimpleEncrypt(vrpUser.Password);
-            using(SqlConnection vrlConnection = new SqlConnection(new Cl_LocalDB().ConnectionString))
+            using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
             {
-                vrlConnection.Query("[dbo].[sp_UserSave]", new { @Username = vrpUser.Name, @Password = vrpUser.Password }, commandType: CommandType.StoredProcedure);
+                vrlConnection.Open();
+                vrlConnection.Query("sp_UserSave", new { in_Username = vrpUser.Name, in_Password = vrpUser.Password }, commandType: CommandType.StoredProcedure);
+                vrlConnection.Close();
             }
         }
 
@@ -29,9 +32,23 @@ namespace Kalorian.DAL.Repository
 
         public ClE_User GetById(int vrpId)
         {
-            using (SqlConnection vrlConnection = new SqlConnection(new Cl_LocalDB().ConnectionString))
+            using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
             {
                 return vrlConnection.Query<ClE_User>("[dbo].[sp_UserGetById]", new { @Id = vrpId }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
+        }
+
+        public ClE_User GetByCredentials(ClE_User vrpUser)
+        {
+            using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
+            {
+                vrlConnection.Open();
+                vrpUser.Password = new Cl_Cryptography().SimpleEncrypt(vrpUser.Password);
+                var vrlResult = vrlConnection.Query<ClE_User>("sp_UserGetByCredentials", new { in_UserName = vrpUser.Name, in_Password = vrpUser.Password }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                vrlConnection.Close();
+                if (vrlResult != null)
+                vrlResult.Password = new Cl_Cryptography().SimpleDecrypt(vrlResult.Password);
+                return vrlResult;
             }
         }
 

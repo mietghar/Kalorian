@@ -1,6 +1,7 @@
 ﻿using Kalorian.Common.LocalDB;
 using Kalorian.View.Login;
 using System;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace Kalorian
@@ -13,21 +14,34 @@ namespace Kalorian
         [STAThread]
         static void Main()
         {
-            string vrlLocalDBName = "kalorian";
+            //string vrlLocalDBName = "kalorian";
             try
             {
-                if (!new Cl_LocalDB().CheckLocalDBExistance(vrlLocalDBName))
-                {
-                    new Cl_LocalDB().CreateLocalDB(vrlLocalDBName);
-                }
-                if (!new Cl_LocalDB().CheckLocalDBExistance(vrlLocalDBName))
-                {
-                    MessageBox.Show("Nie udało się stworzyć lokalnej bazy danych, uruchom aplikację ponownie z uprawnieniami administratora.");
-                }
+                
+                Cl_RemoteDB vrlRemoteDB = new Cl_RemoteDB();
+
+                vrlRemoteDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.ReadData, AccessControlType.Allow);
+                vrlRemoteDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.WriteData, AccessControlType.Allow);
+                vrlRemoteDB.CheckRemoteDBExistance();
+                //Cl_LocalDB vrlLocalDB = new Cl_LocalDB();
+                //vrlLocalDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.ReadData, AccessControlType.Allow);
+                //vrlLocalDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.WriteData, AccessControlType.Allow);
+                //if (!vrlLocalDB.CheckLocalDBExistance(vrlLocalDBName))
+                //{
+                //    vrlLocalDB.CreateLocalDB(vrlLocalDBName);
+                //}
+                //if (!vrlLocalDB.CheckLocalDBExistance(vrlLocalDBName))
+                //{
+                //    MessageBox.Show("Nie udało się stworzyć lokalnej bazy danych, uruchom aplikację ponownie z uprawnieniami administratora.");
+                //}
+                //else
+                //{
+                //    //vrlLocalDB.InitializeTablesAndScripts();
+                //}
             }
             catch(Exception vrlException)
             {
-                MessageBox.Show(vrlException.Message);
+                MessageBox.Show("Nie można ustanowić połączenia z bazą danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

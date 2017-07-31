@@ -50,6 +50,7 @@
             // 
             this.frtxtPassword.Location = new System.Drawing.Point(105, 47);
             this.frtxtPassword.Name = "frtxtPassword";
+            this.frtxtPassword.PasswordChar = '*';
             this.frtxtPassword.Size = new System.Drawing.Size(172, 20);
             this.frtxtPassword.TabIndex = 1;
             // 

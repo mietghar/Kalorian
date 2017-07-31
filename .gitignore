@@ -241,3 +241,6 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 Kalorian.Common/Utility/Cryptography/Cl_Cryptography.cs
+Kalorian.Common/LocalDB/Cl_RemoteDB.cs
+Kalorian.Common/Files/drop.sql
+Kalorian.Common/Files/temp.sql

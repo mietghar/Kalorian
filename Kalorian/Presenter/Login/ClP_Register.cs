@@ -1,5 +1,4 @@
-﻿using Kalorian.Common.Utility.Cryptography;
-using Kalorian.DAL.Entity;
+﻿using Kalorian.DAL.Entity;
 using Kalorian.DAL.Repository;
 using Kalorian.Interface;
 using System;
