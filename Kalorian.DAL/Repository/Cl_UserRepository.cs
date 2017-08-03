@@ -25,6 +25,17 @@ namespace Kalorian.DAL.Repository
             }
         }
 
+        public ClE_User CheckIfExistsByName(string vrpUserName)
+        {
+            using(MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
+            {
+                vrlConnection.Open();
+                ClE_User _User =  vrlConnection.Query<ClE_User>("SELECT usr_Name from kal_User where usr_Name = '"+ vrpUserName+"'").FirstOrDefault();
+                vrlConnection.Close();
+                return _User;
+            }
+        }
+
         public ClE_User GetById(Guid vrpId)
         {
             throw new NotImplementedException();

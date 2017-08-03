@@ -1,7 +1,7 @@
 ﻿using Kalorian.Common.LocalDB;
-using Kalorian.View.Login;
+using Kalorian.Login.View;
 using System;
-using System.Security.AccessControl;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Kalorian
@@ -17,31 +17,16 @@ namespace Kalorian
             //string vrlLocalDBName = "kalorian";
             try
             {
-                
                 Cl_RemoteDB vrlRemoteDB = new Cl_RemoteDB();
-
-                vrlRemoteDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.ReadData, AccessControlType.Allow);
-                vrlRemoteDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.WriteData, AccessControlType.Allow);
                 vrlRemoteDB.CheckRemoteDBExistance();
-                //Cl_LocalDB vrlLocalDB = new Cl_LocalDB();
-                //vrlLocalDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.ReadData, AccessControlType.Allow);
-                //vrlLocalDB.AddDirectorySecurity(@"MYDOMAIN\MyAccount", FileSystemRights.WriteData, AccessControlType.Allow);
-                //if (!vrlLocalDB.CheckLocalDBExistance(vrlLocalDBName))
-                //{
-                //    vrlLocalDB.CreateLocalDB(vrlLocalDBName);
-                //}
-                //if (!vrlLocalDB.CheckLocalDBExistance(vrlLocalDBName))
-                //{
-                //    MessageBox.Show("Nie udało się stworzyć lokalnej bazy danych, uruchom aplikację ponownie z uprawnieniami administratora.");
-                //}
-                //else
-                //{
-                //    //vrlLocalDB.InitializeTablesAndScripts();
-                //}
             }
-            catch(Exception vrlException)
+            catch(SqlException)
             {
-                MessageBox.Show("Nie można ustanowić połączenia z bazą danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nie można połączyć się z bazą danych");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błąd.");
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

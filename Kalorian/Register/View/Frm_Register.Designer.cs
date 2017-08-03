@@ -1,4 +1,4 @@
-﻿namespace Kalorian.View.Login
+﻿namespace Kalorian.Register.View
 {
     partial class Frm_Register
     {
