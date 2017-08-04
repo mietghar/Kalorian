@@ -6,7 +6,7 @@ using Kalorian.Login.Presenter;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Linq;
+using Kalorian.Main.View;
 
 namespace Kalorian.Login.View
 {
@@ -35,15 +35,15 @@ namespace Kalorian.Login.View
         {
             try
             {
-                bool vrlResult = false;
+                ClE_User vrlResult = null;
                 if (ValidateLogin())
                     vrlResult = vrcPresenter.LoginUser(new ClE_User { Name = frtxtUser.Text, Password = frtxtPassword.Text });
-                if (vrlResult)
+                if (vrlResult != null)
                 {
                     this.Visible = false;
-                    using (Form test = new Form())
+                    using (Frm_Main vrfMainWindow = new Frm_Main(vrlResult))
                     {
-                        test.ShowDialog();
+                        vrfMainWindow.ShowDialog();
                     }
                     this.Close();
                 }

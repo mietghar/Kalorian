@@ -1,9 +1,11 @@
-﻿namespace Kalorian.DAL.ViewModel
+﻿using Kalorian.DAL.Enum;
+
+namespace Kalorian.DAL.ViewModel
 {
     public class Cl_UserViewModel
     {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
+        public int Id { get; set; }
+        public int Age { get; set; }
+        public E_Sex Sex { get; set; }
     }
 }

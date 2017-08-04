@@ -2,13 +2,13 @@
 using System.Collections;
 using Kalorian.DAL.Entity;
 using Kalorian.DAL.Interface.Repository;
-using System.Data.SqlClient;
 using Kalorian.Common.LocalDB;
 using Dapper;
 using System.Data;
 using Kalorian.Common.Utility.Cryptography;
 using System.Linq;
 using MySql.Data.MySqlClient;
+using Kalorian.DAL.ViewModel;
 
 namespace Kalorian.DAL.Repository
 {
@@ -25,6 +25,18 @@ namespace Kalorian.DAL.Repository
             }
         }
 
+        public Cl_UserViewModel GetAdditionalUserDataById(int vrpUserId)
+        {
+            using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
+            {
+                vrlConnection.Open();
+                Cl_UserViewModel _User = vrlConnection.Query<Cl_UserViewModel>
+                    ("SELECT usd_usr_Id as Id, usd_Sex as Sex, usd_Age as Age from kal_UserData where usd_usr_Id = '" + vrpUserId + "'").FirstOrDefault();
+                vrlConnection.Close();
+                return _User;
+            }
+        }
+
         public ClE_User CheckIfExistsByName(string vrpUserName)
         {
             using(MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
@@ -33,6 +45,16 @@ namespace Kalorian.DAL.Repository
                 ClE_User _User =  vrlConnection.Query<ClE_User>("SELECT usr_Name from kal_User where usr_Name = '"+ vrpUserName+"'").FirstOrDefault();
                 vrlConnection.Close();
                 return _User;
+            }
+        }
+
+        public void AddUserAdditionalDataById(Cl_UserViewModel vrpUser)
+        {
+            using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
+            {
+                vrlConnection.Open();
+                vrlConnection.Query("INSERT INTO kal_UserData(usd_usr_Id, usd_Age, usd_Sex) VALUES('" +vrpUser.Id+ "', '"+vrpUser.Age+"','"+vrpUser.Sex+"')");
+                vrlConnection.Close();
             }
         }
 

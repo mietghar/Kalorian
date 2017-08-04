@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Entity\Cl_User.cs" />
     <Compile Include="Enum\E_Repositories.cs" />
+    <Compile Include="Enum\E_Sex.cs" />
     <Compile Include="Factory\Cl_RepositoryFactory.cs" />
     <Compile Include="Interface\Repository\I_Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

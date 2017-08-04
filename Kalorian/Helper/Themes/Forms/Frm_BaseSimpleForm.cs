@@ -2,7 +2,6 @@
 using Kalorian.Helper.Themes.Forms.Presenter;
 using System;
 using System.Windows.Forms;
-using Kalorian.Helper.Themes.Buttons;
 
 namespace Kalorian.Helper.Themes.Forms
 {

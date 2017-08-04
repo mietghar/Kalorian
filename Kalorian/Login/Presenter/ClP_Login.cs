@@ -40,11 +40,6 @@ namespace Kalorian.Login.Presenter
             }
         }
 
-        internal bool LoginUser(ClE_User vrpUser)
-        {
-            var vrlResult = vrcUserRepository.GetByCredentials(vrpUser);
-            if (vrlResult == null) return false;
-            return true;
-        }
+        internal ClE_User LoginUser(ClE_User vrpUser) => vrcUserRepository.GetByCredentials(vrpUser);
     }
 }
