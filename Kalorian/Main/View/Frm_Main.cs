@@ -4,8 +4,9 @@ using Kalorian.Main.Interface;
 using Kalorian.Main.Presenter;
 using System.Windows.Forms;
 using System;
-using Kalorian.DAL.Enum;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using Kalorian.Common.Collections;
 
 namespace Kalorian.Main.View
 {
@@ -19,7 +20,17 @@ namespace Kalorian.Main.View
             vrcUser = vrpUser;
             vrcPresenter = new ClP_Main(this);
             InitializeComponent();
+            InitializeDataSource();
             InitializeTheme();
+        }
+
+        private void InitializeDataSource()
+        {
+            List<Cl_SexCollection> _sexlist = new List<Cl_SexCollection> { new Cl_SexCollection("Mężczyzna", 1), new Cl_SexCollection("Kobieta", 2) };
+            MainBindingSource.DataSource = _sexlist;
+            frintSex.DataSource = MainBindingSource.DataSource;
+            frintSex.DisplayMember = "SexName";
+            frintSex.ValueMember = "Id";
         }
 
         private void InitializeTheme()
@@ -35,7 +46,7 @@ namespace Kalorian.Main.View
 
         private void LoadBasicUserDataToControls()
         {
-            lbltxtDayTime.Text = DateTime.Now.Date.ToString();
+            lbltxtDayTime.Text = DateTime.Now.Date.ToString("yyyy.MM.dd");
             lbltxtUserName.Text = vrcUser.Name;
         }
 
@@ -44,7 +55,15 @@ namespace Kalorian.Main.View
             get { return (int)frintAge.Value; }
             set { frintAge.Value = value; }
         }
-        public E_Sex Sex { get; set; }
+        public decimal Weight
+        {
+            get { return (int)frintWeight.Value; }
+            set { frintWeight.Value = value; }
+        }
+        public int Sex {
+            get { return (int)frintSex.SelectedValue; }
+            set { frintSex.SelectedValue = value; }
+        }
         public int UserId => vrcUser.Id;
         public bool IsNewUser { get; set; }
 
@@ -55,6 +74,10 @@ namespace Kalorian.Main.View
                 if (IsNewUser)
                 {
                     vrcPresenter.AddUserAdditionalDataById(vrcUser.Id);
+                }
+                else
+                {
+                    vrcPresenter.EditUserAdditionalDataById(vrcUser.Id);
                 }
             }
             catch(SqlException vrlException)

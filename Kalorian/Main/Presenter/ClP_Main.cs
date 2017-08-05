@@ -26,10 +26,14 @@ namespace Kalorian.Main.Presenter
             }
 
             vrcView.Age = vrlUserViewModel.Age;
-            vrcView.Sex = vrlUserViewModel.Sex;
+            vrcView.Sex = (int)vrlUserViewModel.Sex;
+            vrcView.Weight = vrlUserViewModel.Weight;
         }
 
         internal void AddUserAdditionalDataById(int vrpUserId) => vrcUserRepository.AddUserAdditionalDataById
-            (new Cl_UserViewModel() { Age = vrcView.Age, Sex = vrcView.Sex, Id = vrpUserId });
+            (new Cl_UserViewModel() { Age = vrcView.Age, Sex = vrcView.Sex, Weight = vrcView.Weight, Id = vrpUserId});
+
+        internal void EditUserAdditionalDataById(int vrpUserId) => vrcUserRepository.EditUserAdditionalDataById
+            (new Cl_UserViewModel() { Age = vrcView.Age, Sex = vrcView.Sex, Weight = vrcView.Weight, Id = vrpUserId });
     }
 }

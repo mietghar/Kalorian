@@ -6,6 +6,7 @@ namespace Kalorian.DAL.ViewModel
     {
         public int Id { get; set; }
         public int Age { get; set; }
-        public E_Sex Sex { get; set; }
+        public int Sex { get; set; }
+        public decimal Weight { get; set; }
     }
 }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Cl_SexCollection.cs" />
     <Compile Include="Interface\I_Identifiable.cs" />
     <Compile Include="LocalDB\Cl_LocalDB.cs" />
     <Compile Include="LocalDB\Cl_RemoteDB.cs" />
