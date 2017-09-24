@@ -8,7 +8,7 @@ namespace Kalorian.Helper.Themes.Buttons
     {
         public Cl_CloseButton()
         {
-            this.BackColor = Cl_BaseColor.StandardCloseButton;
+            this.BackColor = Cl_BaseColor.LightCloseButton;
             this.Name = "btnClose";
             this.Text = "Zamknij";
         }

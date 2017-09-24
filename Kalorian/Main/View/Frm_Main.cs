@@ -7,6 +7,7 @@ using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using Kalorian.Common.Collections;
+using Kalorian.DAL.ViewModel;
 
 namespace Kalorian.Main.View
 {
@@ -22,7 +23,19 @@ namespace Kalorian.Main.View
             InitializeComponent();
             InitializeDataSource();
             InitializeTheme();
+            InitializeEvents();
         }
+
+        private void InitializeEvents()
+        {
+            this.frintAge.ValueChanged += CalculateBMROnValueChanged;
+            this.frintHeight.ValueChanged += CalculateBMROnValueChanged;
+            this.frintSex.SelectedValueChanged += CalculateBMROnValueChanged;
+            this.frintWeight.ValueChanged += CalculateBMROnValueChanged;
+        }        
+
+        private void CalculateBMROnValueChanged(object sender, EventArgs e) =>
+            this.BMR = vrcPresenter.CalculateAndSetUserBMR(vrcUserAdditionalData);
 
         private void InitializeDataSource()
         {
@@ -35,7 +48,8 @@ namespace Kalorian.Main.View
 
         private void InitializeTheme()
         {
-            this.BackColor = Cl_BaseColor.StandardBackground;
+            this.BackColor = Cl_BaseColor.LightBackground;
+            this.frMenu.BackColor = Cl_BaseColor.LightBackground;
         }
 
         private void Frm_Main_Load(object sender, System.EventArgs e)
@@ -60,12 +74,31 @@ namespace Kalorian.Main.View
             get { return (int)frintWeight.Value; }
             set { frintWeight.Value = value; }
         }
-        public int Sex {
+        public int Sex
+        {
             get { return (int)frintSex.SelectedValue; }
             set { frintSex.SelectedValue = value; }
         }
+        public decimal HeightInCm
+        {
+            get { return (int)frintHeight.Value; }
+            set { frintHeight.Value = value; }
+        }
         public int UserId => vrcUser.Id;
         public bool IsNewUser { get; set; }
+        public decimal BMR
+        {
+            get { return Convert.ToDecimal(lbltxtBMR.Text); }
+            set { lbltxtBMR.Text = value.ToString(); }
+        }
+        private Cl_UserViewModel vrcUserAdditionalData
+            => new Cl_UserViewModel
+            {
+                Age = this.Age,
+                HeightInCm = this.HeightInCm,
+                Sex = this.Sex,
+                Weight = this.Weight
+            };
 
         private void btnSaveConfiguration_Click(object sender, EventArgs e)
         {
@@ -73,20 +106,36 @@ namespace Kalorian.Main.View
             {
                 if (IsNewUser)
                 {
-                    vrcPresenter.AddUserAdditionalDataById(vrcUser.Id);
+                    if (vrcPresenter.AddUserAdditionalDataById(vrcUser.Id))
+                    {
+                        MessageBox.Show("Poprawnie dodano dane użytkownika");
+                        IsNewUser = false;
+                    }
+
                 }
                 else
                 {
-                    vrcPresenter.EditUserAdditionalDataById(vrcUser.Id);
+                    if (vrcPresenter.EditUserAdditionalDataById(vrcUser.Id))
+                    {
+                        MessageBox.Show("Poprawnie edytowano dane użytkownika");
+                    }
                 }
             }
-            catch(SqlException vrlException)
+            catch (SqlException vrlException)
             {
                 MessageBox.Show("Nie można się połączyć z bazą danych.");
             }
-            catch(Exception)
+            catch (Exception)
             {
 
+            }
+        }
+
+        private void frAddMenuProduct_Click(object sender, EventArgs e)
+        {
+            using(Frm_Product vrfProduct = new Frm_Product())
+            {
+                vrfProduct.ShowDialog();
             }
         }
     }

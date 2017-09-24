@@ -1,6 +1,4 @@
-﻿using Kalorian.DAL.Enum;
-
-namespace Kalorian.Main.Interface
+﻿namespace Kalorian.Main.Interface
 {
     public interface I_MainView
     {
@@ -9,5 +7,7 @@ namespace Kalorian.Main.Interface
         int UserId { get; }
         bool IsNewUser { get; set; }
         decimal Weight { get; set; }
+        decimal HeightInCm { get; set; }
+        decimal BMR { get; set; }
     }
 }

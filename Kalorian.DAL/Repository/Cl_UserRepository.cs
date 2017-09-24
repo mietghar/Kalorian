@@ -31,19 +31,20 @@ namespace Kalorian.DAL.Repository
             {
                 vrlConnection.Open();
                 Cl_UserViewModel _User = vrlConnection.Query<Cl_UserViewModel>
-                    ("SELECT usd_usr_Id as Id, usd_Sex as Sex, usd_Age as Age, usd_Weight as Weight from kal_UserData where usd_usr_Id = '" + vrpUserId + "'").FirstOrDefault();
+                    ("SELECT usd_usr_Id as Id, usd_Sex as Sex, usd_Age as Age, usd_Weight as Weight, usd_Height as HeightInCm from kal_UserData where usd_usr_Id = '" + vrpUserId + "'").FirstOrDefault();
                 vrlConnection.Close();
                 return _User;
             }
         }
 
-        public void EditUserAdditionalDataById(Cl_UserViewModel vrpUser)
+        public bool EditUserAdditionalDataById(Cl_UserViewModel vrpUser)
         {
             using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
             {
                 vrlConnection.Open();
-                vrlConnection.Query("UPDATE kal_UserData SET usd_Age = "+vrpUser.Age+", usd_Sex = "+vrpUser.Sex+", usd_Weight = "+vrpUser.Weight+" WHERE usd_usr_Id = "+vrpUser.Id);
+                vrlConnection.Query("UPDATE kal_UserData SET usd_Age = "+vrpUser.Age+", usd_Sex = "+vrpUser.Sex+", usd_Weight = "+vrpUser.Weight+", usd_Height = "+vrpUser.HeightInCm+" WHERE usd_usr_Id = "+vrpUser.Id);
                 vrlConnection.Close();
+                return true;
             }
         }
 
@@ -58,13 +59,14 @@ namespace Kalorian.DAL.Repository
             }
         }
 
-        public void AddUserAdditionalDataById(Cl_UserViewModel vrpUser)
+        public bool AddUserAdditionalDataById(Cl_UserViewModel vrpUser)
         {
             using (MySqlConnection vrlConnection = new MySqlConnection(new Cl_RemoteDB().ConnectionString))
             {
                 vrlConnection.Open();
-                vrlConnection.Query("INSERT INTO kal_UserData(usd_usr_Id, usd_Age, usd_Sex, usd_Weight) VALUES('" +vrpUser.Id+ "', '"+vrpUser.Age+"','"+vrpUser.Sex+"', '"+vrpUser.Weight+"')");
+                vrlConnection.Query("INSERT INTO kal_UserData(usd_usr_Id, usd_Age, usd_Sex, usd_Weight, usd_Height) VALUES('" +vrpUser.Id+ "', '"+vrpUser.Age+"','"+vrpUser.Sex+"', '"+vrpUser.Weight+"', "+vrpUser.HeightInCm+")");
                 vrlConnection.Close();
+                return true;
             }
         }
 

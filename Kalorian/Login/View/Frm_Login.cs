@@ -21,11 +21,12 @@ namespace Kalorian.Login.View
             vrcPresenter = new ClP_Login(this);
             InitializeComponent();
             SetTheme();
+            this.HelpButton = true;
         }
 
         private void SetTheme()
         {
-            this.BackColor = Cl_BaseColor.StandardBackground;
+            this.BackColor = Cl_BaseColor.LightBackground;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

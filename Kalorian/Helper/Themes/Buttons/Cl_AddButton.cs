@@ -9,11 +9,11 @@ namespace Kalorian.Helper.Themes.Buttons
 {
     [ToolboxItem(true)]
     [DisplayName("Standard close button")]
-    class Cl_AddButton : Cl_SimpleButton
+    public class Cl_AddButton : Cl_SimpleButton
     {
         public Cl_AddButton()
         {
-            this.BackColor = Cl_BaseColor.StandardAddButton;
+            this.BackColor = Cl_BaseColor.LightAddButton;
             this.Name = "btnAdd";
             this.Text = "Dodaj";
         }

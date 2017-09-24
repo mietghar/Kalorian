@@ -12,7 +12,7 @@ namespace Kalorian.Helper.Themes.Buttons
         public Cl_SimpleButton()
         {
             this.FlatStyle = FlatStyle.Flat;
-            this.BackColor = Cl_BaseColor.StandardSimpleButton;
+            this.BackColor = Cl_BaseColor.LightSimpleButton;
         }
     }
 }

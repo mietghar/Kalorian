@@ -71,6 +71,14 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MiscUtil, Version=0.2.0.0, Culture=neutral, PublicKeyToken=d3c42c4bfacf7596, processorArchitecture=MSIL">
+      <HintPath>..\packages\JonSkeet.MiscUtil.0.2.0\lib\net35\MiscUtil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -117,6 +125,14 @@
     <Compile Include="Main\View\Frm_Main.Designer.cs">
       <DependentUpon>Frm_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\View\Frm_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\View\Frm_Product.Designer.cs">
+      <DependentUpon>Frm_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\Interface\I_ProductView.cs" />
+    <Compile Include="Product\Presenter\ClP_Product.cs" />
     <Compile Include="Register\Interface\I_RegisterView.cs" />
     <Compile Include="Register\Presenter\ClP_Register.cs" />
     <Compile Include="Program.cs" />
@@ -143,6 +159,9 @@
     <EmbeddedResource Include="Main\View\Frm_Main.resx">
       <DependentUpon>Frm_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\View\Frm_Product.resx">
+      <DependentUpon>Frm_Product.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -159,6 +178,7 @@
       <DependentUpon>Frm_Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Kalorian_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Kalorian.Common.Collections.Cl_SexCollection.datasource" />
     <None Include="Properties\Settings.settings">
@@ -186,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Factory\" />
+    <Folder Include="Product\View\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

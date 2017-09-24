@@ -13,7 +13,7 @@ namespace Kalorian.Helper.Themes.Forms.Presenter
         
         private void ColorBackground()
         {
-            vrcView.BackColor = Cl_BaseColor.StandardBackground;
+            vrcView.BackColor = Cl_BaseColor.LightBackground;
         }
     }
 }
