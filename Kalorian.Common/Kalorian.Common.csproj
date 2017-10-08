@@ -53,6 +53,8 @@
     <Compile Include="LocalDB\Cl_LocalDB.cs" />
     <Compile Include="LocalDB\Cl_RemoteDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Common\Identifiable.cs" />
+    <Compile Include="Utility\Common\IIdentifiable.cs" />
     <Compile Include="Utility\Cryptography\Cl_Cryptography.cs" />
     <Compile Include="Utility\Exceptions\Cl_Common.cs" />
   </ItemGroup>
