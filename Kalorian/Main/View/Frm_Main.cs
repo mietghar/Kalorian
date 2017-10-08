@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using Kalorian.Common.Collections;
 using Kalorian.DAL.ViewModel;
+using Kalorian.Product.View;
+using Kalorian.Meal.View;
 
 namespace Kalorian.Main.View
 {
@@ -133,9 +135,31 @@ namespace Kalorian.Main.View
 
         private void frAddMenuProduct_Click(object sender, EventArgs e)
         {
-            using(Frm_Product vrfProduct = new Frm_Product())
+            using(Frm_Product ProductForm = new Frm_Product())
             {
-                vrfProduct.ShowDialog();
+                try
+                {
+                    ProductForm.ShowDialog();
+                }
+                catch
+                {
+                    MessageBox.Show("Wystąpił problem podczas dodawania produktu");
+                }
+            }
+        }
+
+        private void frAddMenuMeal_Click(object sender, EventArgs e)
+        {
+            using (Frm_Meal MealForm = new Frm_Meal())
+            {
+                try
+                {
+                    MealForm.ShowDialog();
+                }
+                catch
+                {
+                    MessageBox.Show("Wystąpił problem podczas dodawania posiłku");
+                }
             }
         }
     }

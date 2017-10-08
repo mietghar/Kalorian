@@ -1,73 +1,73 @@
-﻿using Kalorian.DAL.Entity;
+﻿using Kalorian.Common.Utility.Common;
+using Kalorian.Helper.FilesOperations;
 using Kalorian.Product.Interface;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Kalorian.DAL.Entity;
+using System;
 
 namespace Kalorian.Product.Presenter
 {
-    class Cl_Id
-    {
-        public int Id { get; set; }
-    }
-
     public class ClP_Product
     {
-        private readonly I_ProductView vrcView;
+        private readonly I_ProductView View;
+        private IFileProvider ProductFileProvider = new FileProviderFactory().GetFileProvider(EFileType.Product);
 
-        public ClP_Product(I_ProductView vrpView)
+        public ClP_Product(I_ProductView view)
         {
-            vrcView = vrpView;
+            View = view;
         }
 
-        internal void SaveNewProduct()
+        internal bool SaveNewProduct()
         {
-            var _path = Environment.CurrentDirectory;
-            var _filename = "Products.dat";
-            var _combinedPath = string.Format("{0}\\{1}", _path, _filename);
-            List<Cl_Id> _AllProductsIds = new List<Cl_Id>();
-            //stworzenie nowego obiektu produktu
-            Cl_Product vrlProduct = new Cl_Product
+            try
             {
-                ProductName = vrcView.ProductName,
-                Carbo = vrcView.Carbo,
-                Fat = vrcView.Fat,
-                KcalPerGramm = vrcView.KcalPerGramm,
-                Salt = vrcView.Salt,
-                Whey = vrcView.Whey,
-                Id = 1
-            };
-            var vrlSerializedProduct = JsonConvert.SerializeObject(vrlProduct);
-            if (!File.Exists(_combinedPath))
-            {
-                using (var tw = File.CreateText(_combinedPath))
+                var _combinedPath = ProductFileProvider.GetFileData().Path;
+                List<IIdentifiable> _allProductsIds = new List<IIdentifiable>();
+                //stworzenie nowego obiektu produktu
+                ProductDO _product = new ProductDO
                 {
-                    tw.WriteLine("[");
-                    tw.WriteLine(vrlSerializedProduct);
-                    tw.WriteLine("]");
-                    tw.Close();
+                    ProductName = View.ProductName,
+                    Carbo = View.Carbo,
+                    Fat = View.Fat,
+                    KcalPer100Gramm = View.KcalPerGramm,
+                    Salt = View.Salt,
+                    Whey = View.Whey,
+                    Id = 1
+                };
+                var _serializedProduct = JsonConvert.SerializeObject(_product);
+                if (!ProductFileProvider.CheckIfFileExists())
+                {
+                    using (var _file = File.CreateText(_combinedPath))
+                    {
+                        _file.WriteLine("[");
+                        _file.WriteLine(_serializedProduct);
+                        _file.WriteLine("]");
+                        _file.Close();
+                    }
                 }
-            }
-            else
-            {
-                var vrlAllFile = File.ReadAllText(_combinedPath);
-                var vrlDeserializedFile = JsonConvert.DeserializeObject<List<Cl_Id>>(vrlAllFile);
-                var vrlMaxId = vrlDeserializedFile.Select(x => x.Id).Max();
+                else
+                {
+                    var _allFile = File.ReadAllText(_combinedPath);
+                    var _deserializedFile = JsonConvert.DeserializeObject<List<Identifiable>>(_allFile);
 
-                string _tempFilePath = Path.GetTempFileName();
-                var _linesToKeep = File.ReadLines(_combinedPath).Where(x => x != "]");
-                List<string> aaa = _linesToKeep.ToList();
-                vrlProduct.Id = vrlMaxId + 1;
-                var _lastIndexOfProductList = aaa.Count - 1;
-                aaa[_lastIndexOfProductList] = string.Format("{0},", aaa[_lastIndexOfProductList]);
-                aaa.Add(JsonConvert.SerializeObject(vrlProduct));
-                aaa.Add("]");
-                File.WriteAllLines(_tempFilePath, aaa);
-                File.Delete(_combinedPath);
-                File.Move(_tempFilePath, _combinedPath);
+                    var _tempFilePath = Path.GetTempFileName();
+                    var _linesToKeep = File.ReadLines(_combinedPath).Where(x => x != "]").ToList();
+                    _product.Id = _deserializedFile.Select(x => x.Id).Max() + 1;
+                    var _lastIndexOfProductList = _linesToKeep.Count - 1;
+                    _linesToKeep[_lastIndexOfProductList] = string.Format("{0},", _linesToKeep[_lastIndexOfProductList]);
+                    _linesToKeep.Add(JsonConvert.SerializeObject(_product));
+                    _linesToKeep.Add("]");
+                    File.WriteAllLines(_tempFilePath, _linesToKeep);
+                    File.Delete(_combinedPath);
+                    File.Move(_tempFilePath, _combinedPath);                    
+                }
+
+                return true;
             }
+            catch { return false; }            
         }
     }
 }

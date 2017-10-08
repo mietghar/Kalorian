@@ -1,4 +1,4 @@
-﻿namespace Kalorian.Main.View
+﻿namespace Kalorian.Product.View
 {
     partial class Frm_Product
     {
@@ -82,50 +82,50 @@
             // 
             // frdecSalt
             // 
-            this.frdecSalt.Location = new System.Drawing.Point(104, 192);
+            this.frdecSalt.Location = new System.Drawing.Point(139, 192);
             this.frdecSalt.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.frdecSalt.Name = "frdecSalt";
-            this.frdecSalt.Size = new System.Drawing.Size(130, 20);
+            this.frdecSalt.Size = new System.Drawing.Size(95, 20);
             this.frdecSalt.TabIndex = 5;
             // 
             // frdecWhey
             // 
-            this.frdecWhey.Location = new System.Drawing.Point(104, 159);
+            this.frdecWhey.Location = new System.Drawing.Point(139, 159);
             this.frdecWhey.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.frdecWhey.Name = "frdecWhey";
-            this.frdecWhey.Size = new System.Drawing.Size(130, 20);
+            this.frdecWhey.Size = new System.Drawing.Size(95, 20);
             this.frdecWhey.TabIndex = 4;
             // 
-            // frdecProductName
+            // frtxtProductName
             // 
             this.frtxtProductName.Location = new System.Drawing.Point(104, 23);
             this.frtxtProductName.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
-            this.frtxtProductName.Name = "frdecProductName";
+            this.frtxtProductName.Name = "frtxtProductName";
             this.frtxtProductName.Size = new System.Drawing.Size(130, 20);
             this.frtxtProductName.TabIndex = 0;
             // 
             // frdecKcal
             // 
-            this.frdecKcal.Location = new System.Drawing.Point(104, 60);
+            this.frdecKcal.Location = new System.Drawing.Point(139, 60);
             this.frdecKcal.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.frdecKcal.Name = "frdecKcal";
-            this.frdecKcal.Size = new System.Drawing.Size(130, 20);
+            this.frdecKcal.Size = new System.Drawing.Size(95, 20);
             this.frdecKcal.TabIndex = 1;
             // 
             // frdecFat
             // 
-            this.frdecFat.Location = new System.Drawing.Point(104, 93);
+            this.frdecFat.Location = new System.Drawing.Point(139, 93);
             this.frdecFat.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.frdecFat.Name = "frdecFat";
-            this.frdecFat.Size = new System.Drawing.Size(130, 20);
+            this.frdecFat.Size = new System.Drawing.Size(95, 20);
             this.frdecFat.TabIndex = 2;
             // 
             // frdecCarbo
             // 
-            this.frdecCarbo.Location = new System.Drawing.Point(104, 126);
+            this.frdecCarbo.Location = new System.Drawing.Point(139, 126);
             this.frdecCarbo.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.frdecCarbo.Name = "frdecCarbo";
-            this.frdecCarbo.Size = new System.Drawing.Size(130, 20);
+            this.frdecCarbo.Size = new System.Drawing.Size(95, 20);
             this.frdecCarbo.TabIndex = 3;
             // 
             // lblSalt
@@ -134,9 +134,9 @@
             this.lblSalt.Location = new System.Drawing.Point(20, 195);
             this.lblSalt.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.lblSalt.Name = "lblSalt";
-            this.lblSalt.Size = new System.Drawing.Size(25, 13);
+            this.lblSalt.Size = new System.Drawing.Size(60, 13);
             this.lblSalt.TabIndex = 5;
-            this.lblSalt.Text = "Sól:";
+            this.lblSalt.Text = "Sól / 100g:";
             // 
             // lblWhey
             // 
@@ -144,9 +144,9 @@
             this.lblWhey.Location = new System.Drawing.Point(20, 162);
             this.lblWhey.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.lblWhey.Name = "lblWhey";
-            this.lblWhey.Size = new System.Drawing.Size(41, 13);
+            this.lblWhey.Size = new System.Drawing.Size(76, 13);
             this.lblWhey.TabIndex = 4;
-            this.lblWhey.Text = "Białko:";
+            this.lblWhey.Text = "Białko / 100g:";
             // 
             // lblCarbo
             // 
@@ -154,9 +154,9 @@
             this.lblCarbo.Location = new System.Drawing.Point(20, 129);
             this.lblCarbo.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.lblCarbo.Name = "lblCarbo";
-            this.lblCarbo.Size = new System.Drawing.Size(78, 13);
+            this.lblCarbo.Size = new System.Drawing.Size(113, 13);
             this.lblCarbo.TabIndex = 3;
-            this.lblCarbo.Text = "Węglowodany:";
+            this.lblCarbo.Text = "Węglowodany / 100g:";
             // 
             // lblFat
             // 
@@ -164,9 +164,9 @@
             this.lblFat.Location = new System.Drawing.Point(20, 96);
             this.lblFat.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.lblFat.Name = "lblFat";
-            this.lblFat.Size = new System.Drawing.Size(48, 13);
+            this.lblFat.Size = new System.Drawing.Size(83, 13);
             this.lblFat.TabIndex = 2;
-            this.lblFat.Text = "Tłuszcz:";
+            this.lblFat.Text = "Tłuszcz / 100g:";
             // 
             // lblKcalPerGramm
             // 
@@ -174,9 +174,9 @@
             this.lblKcalPerGramm.Location = new System.Drawing.Point(20, 63);
             this.lblKcalPerGramm.Margin = new System.Windows.Forms.Padding(3, 0, 3, 20);
             this.lblKcalPerGramm.Name = "lblKcalPerGramm";
-            this.lblKcalPerGramm.Size = new System.Drawing.Size(54, 13);
+            this.lblKcalPerGramm.Size = new System.Drawing.Size(66, 13);
             this.lblKcalPerGramm.TabIndex = 1;
-            this.lblKcalPerGramm.Text = "Kcal / 1g:";
+            this.lblKcalPerGramm.Text = "Kcal / 100g:";
             // 
             // lblProductName
             // 
@@ -203,6 +203,7 @@
             // 
             // Frm_Product
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 306);

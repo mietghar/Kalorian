@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Cl_Product.cs" />
+    <Compile Include="Entity\MealDO.cs" />
+    <Compile Include="Entity\ProductDO.cs" />
     <Compile Include="Entity\Cl_User.cs" />
     <Compile Include="Enum\E_Repositories.cs" />
     <Compile Include="Enum\E_Sex.cs" />

@@ -3,8 +3,9 @@ using Kalorian.Helper.Themes.Forms;
 using Kalorian.Product.Interface;
 using Kalorian.Product.Presenter;
 using System;
+using System.Windows.Forms;
 
-namespace Kalorian.Main.View
+namespace Kalorian.Product.View
 {
     public partial class Frm_Product : Frm_BaseSimpleForm, I_ProductView
     {
@@ -22,8 +23,16 @@ namespace Kalorian.Main.View
             this.BackColor = Cl_BaseColor.StandardBackGround;
         }
 
-        private void btnSave_Click(object sender, System.EventArgs e) =>
-            vrcPresenter.SaveNewProduct();
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+            if(vrcPresenter.SaveNewProduct())
+            {
+                MessageBox.Show("Produkt dodany prawidłowo");
+                this.Close();
+            }
+            else
+                MessageBox.Show("Nie udało się dodać produktu");
+        }
 
         new public string ProductName => frtxtProductName.Text;
         public decimal KcalPerGramm => Convert.ToDecimal(frdecKcal.Text);

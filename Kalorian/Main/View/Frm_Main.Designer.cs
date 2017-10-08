@@ -53,6 +53,7 @@
             this.frMenu = new System.Windows.Forms.MenuStrip();
             this.frAddMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.frAddMenuProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.frAddMenuMeal = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.frintHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frintWeight)).BeginInit();
@@ -304,7 +305,8 @@
             // frAddMenu
             // 
             this.frAddMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.frAddMenuProduct});
+            this.frAddMenuProduct,
+            this.frAddMenuMeal});
             this.frAddMenu.Name = "frAddMenu";
             this.frAddMenu.Size = new System.Drawing.Size(50, 20);
             this.frAddMenu.Text = "Dodaj";
@@ -315,6 +317,13 @@
             this.frAddMenuProduct.Size = new System.Drawing.Size(152, 22);
             this.frAddMenuProduct.Text = "Produkt";
             this.frAddMenuProduct.Click += new System.EventHandler(this.frAddMenuProduct_Click);
+            // 
+            // frAddMenuMeal
+            // 
+            this.frAddMenuMeal.Name = "frAddMenuMeal";
+            this.frAddMenuMeal.Size = new System.Drawing.Size(152, 22);
+            this.frAddMenuMeal.Text = "Posiłek";
+            this.frAddMenuMeal.Click += new System.EventHandler(this.frAddMenuMeal_Click);
             // 
             // Frm_Main
             // 
@@ -369,5 +378,6 @@
         private System.Windows.Forms.MenuStrip frMenu;
         private System.Windows.Forms.ToolStripMenuItem frAddMenu;
         private System.Windows.Forms.ToolStripMenuItem frAddMenuProduct;
+        private System.Windows.Forms.ToolStripMenuItem frAddMenuMeal;
     }
 }
